@@ -18,7 +18,7 @@ const Product = ({product,onAddToCart}) => {
                     {product.price.formatted_with_symbol}
                 </Typography>
             </div>
-            <Typography dangerouslySetInnerHTML={{ __html: product.description.length > 100 ? product.description.substring(0,200)+'...' : product.description}} variant='body2' color='textSecondary'/>
+            <Typography dangerouslySetInnerHTML={{ __html: product.description.length > 215 ? product.description.substring(0,215)+'...' : product.description}} variant='body2' color='textSecondary'/>
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
             <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)}>
