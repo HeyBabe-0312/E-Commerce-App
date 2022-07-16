@@ -6,12 +6,13 @@ import Review from './Review.jsx'
 
 const stripePromise = loadStripe('pk_test_51LMB8XFB0TNm6Q4tFuD4JCnADvIqkR9di3ozLZ47bthKfB9uOzopKbBsZBCxIvdo3zqZvGWqTYjQUslQa6TVUv9X00p0TFbUHw');
 
-const PaymentForm = ({shippingData,checkoutToken,backStep,onCaptureCheckout,nextStep}) => {
+const PaymentForm = ({shippingData,checkoutToken,backStep,onCaptureCheckout,nextStep,handleEmptyCart}) => {
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
 
     if(!stripe || !elements) return;
     nextStep();
+    handleEmptyCart();
     // const cardElement = elements.getElement(CardElement);
 
     // const { error, paymentMethod } = await stripe.createPaymentMethod({type: 'card', card: cardElement});

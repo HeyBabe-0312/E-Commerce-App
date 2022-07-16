@@ -7,7 +7,7 @@ import {commerce} from '../../../lib/commerce'
 import {Link} from 'react-router-dom'
 
 const steps = ['Shipping address', 'Payment details'];
-const Checkout = ({cart,onCaptureCheckout,order,error}) => {
+const Checkout = ({cart,onCaptureCheckout,order,error,handleEmptyCart}) => {
     const [activeStep,setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
@@ -57,7 +57,7 @@ const Checkout = ({cart,onCaptureCheckout,order,error}) => {
     //         <Button component={Link} to='/' variant="outlined" type="button">Back to Home</Button>
     //     </>
     // }
-    console.log(shippingData);
+
     const Confirmation = () =>(
             <>
                 <div>
@@ -69,7 +69,7 @@ const Checkout = ({cart,onCaptureCheckout,order,error}) => {
             </>
         )
 
-    const Form = () => activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next}/> : <PaymentForm shippingData={shippingData} backStep={backStep} nextStep={nextStep} onCaptureCheckout={onCaptureCheckout} checkoutToken={checkoutToken}/>
+    const Form = () => activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next}/> : <PaymentForm shippingData={shippingData} backStep={backStep} nextStep={nextStep} handleEmptyCart={handleEmptyCart} onCaptureCheckout={onCaptureCheckout} checkoutToken={checkoutToken}/>
 
   return (
     <CssBaseline>
